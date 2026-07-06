@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestra Boda</title>
+    <style>
+        body, html { 
+            margin: 0; 
+            padding: 0; 
+            height: 100%; 
+            font-family: sans-serif; 
+            background-color: #f8f5f2; 
+        }
+        
+        /* PÁGINA 1: La Portada */
+        #pagina-1 {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center; /* Esto centra el texto si ocupa varias líneas en móvil */
+            padding: 0 20px; /* Evita que el texto toque los bordes de la pantalla */
+            box-sizing: border-box;
+        }
+
+        #titulo-portada {
+            color: #333; 
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+
+        #btn-entrar {
+            padding: 15px 40px;
+            font-size: 18px;
+            background-color: #dcc73c;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        #btn-entrar:hover { background-color: #1a252f; }
+
+        /* PÁGINA 2: La Invitación */
+        #pagina-2 {
+            display: none; 
+            text-align: center;
+            padding: 40px 20px; /* Espacio arriba y abajo para que respire */
+        }
+
+        .imagen-invitacion {
+            width: 100%; 
+            max-width: 50%; /* Justo a la mitad del tamaño de la pantalla en PC */
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        /* REGLAS EXCLUSIVAS PARA MÓVILES (Pantallas de menos de 768px) */
+        @media (max-width: 768px) {
+            #titulo-portada {
+                font-size: 1.6rem; /* Texto un poco más pequeño en móviles */
+            }
+            .imagen-invitacion {
+                max-width: 95%; /* En móvil dejamos que ocupe casi toda la pantalla para que se lea bien */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PÁGINA 1 -->
+    <div id="pagina-1">
+        <h1 id="titulo-portada">Tenemos algo que contarte...</h1>
+        <button id="btn-entrar">Abrir Invitación</button>
+    </div>
+
+    <!-- PÁGINA 2 -->
+    <div id="pagina-2">
+        <!-- Reemplaza "invitacion.jpg" por el nombre exacto de tu imagen -->
+        <img src="invitacion.jpg" alt="Invitación de Boda" class="imagen-invitacion">
+    </div>
+
+    <!-- AUDIO -->
+    <!-- Reemplaza "cancion.mp3" por el nombre exacto de tu archivo -->
+    <audio id="musica-fondo" src="cancion.mp3" preload="auto" loop></audio>
+
+    <script>
+        document.getElementById('btn-entrar').addEventListener('click', function() {
+            // 1. Iniciar música
+            const musica = document.getElementById('musica-fondo');
+            musica.play();
+
+            // 2. Transición de páginas
+            document.getElementById('pagina-1').style.display = 'none';
+            document.getElementById('pagina-2').style.display = 'block';
+            
+            // 3. Subir arriba del todo por si acaso
+            window.scrollTo(0, 0);
+        });
+    </script>
+</body>
+</html>
