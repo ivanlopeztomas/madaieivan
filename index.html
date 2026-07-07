@@ -56,18 +56,27 @@
             padding: 15px 50px;
             font-size: 1.1rem;
             letter-spacing: 2px;
-            background-color: transparent;
-            color: var(--negro-tinta);
+            
+            /* Colores invertidos para que destaque */
+            background-color: var(--negro-tinta);
+            color: #ffffff;
             border: 1.5px solid var(--negro-tinta); 
+            
             border-radius: 0; 
             cursor: pointer;
             transition: all 0.4s ease;
             text-transform: uppercase;
+            
+            /* Pequeña sombra para darle relieve y destacarlo más del fondo blanco */
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         
         #btn-entrar:hover { 
-            background-color: var(--negro-tinta);
-            color: #ffffff;
+            /* Efecto al pasar el ratón (útil en PC) */
+            background-color: #ffffff;
+            color: var(--negro-tinta);
+            border: 1.5px solid #d4af37; /* Toque dorado/arcilla en el borde al hacer hover */
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
         }
 
         /* === PÁGINA 2: Las Invitaciones === */
