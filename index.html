@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestra Boda - Madai & Iván</title>
+    <!-- Importamos tipografías elegantes de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Variable de color para el "negro imprenta" */
+        :root {
+            --negro-tinta: #2b2b2b; 
+        }
+
+        body, html { 
+            margin: 0; 
+            padding: 0; 
+            height: 100%; 
+            background-color: #ffffff; /* Fondo blanco puro */
+            overflow-x: hidden; /* Evita scroll horizontal indeseado */
+        }
+        
+        /* === PÁGINA 1: Portada estilo Letterpress === */
+        #pagina-1 {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            box-sizing: border-box;
+            background-color: #ffffff;
+        }
+
+        #titulo-portada {
+            font-family: 'Great Vibes', cursive;
+            color: var(--negro-tinta); 
+            margin-bottom: 10px;
+            font-size: 4rem; /* Un poco más grande para destacar los nombres */
+            font-weight: normal;
+        }
+
+        #subtitulo-portada {
+            font-family: 'Playfair Display', serif;
+            color: var(--negro-tinta);
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+
+        #btn-entrar {
+            font-family: 'Playfair Display', serif;
+            padding: 15px 50px;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            background-color: transparent;
+            color: var(--negro-tinta);
+            border: 1.5px solid var(--negro-tinta); 
+            border-radius: 0; 
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-transform: uppercase;
+        }
+        
+        #btn-entrar:hover { 
+            background-color: var(--negro-tinta);
+            color: #ffffff;
+        }
+
+        /* === PÁGINA 2: Las Invitaciones === */
+        #pagina-2 {
+            display: none; /* Oculto inicialmente */
+            flex-direction: column; /* Coloca las imágenes en columna (una bajo otra) */
+            align-items: center;
+            width: 100%;
+            background-color: #ffffff; 
+            /* Se añade un padding superior e inferior para que no pegue a los bordes,
+               pero sin padding lateral para que las imágenes toquen los bordes */
+            padding: 40px 0; 
+            box-sizing: border-box;
+        }
+
+        .imagen-invitacion {
+            width: 100%; 
+            max-width: 50%; /* Mitad de pantalla en PC para que no sea gigante */
+            height: auto;
+            display: block;
+        }
+
+        /* Separador entre las imágenes */
+        .separador {
+            height: 60px; /* Espacio entre las imágenes */
+            width: 100%;
+        }
+
+        /* REGLAS EXCLUSIVAS PARA MÓVILES */
+        @media (max-width: 768px) {
+            #titulo-portada {
+                font-size: 3rem;
+            }
+            #subtitulo-portada {
+                font-size: 0.9rem;
+            }
+            #pagina-2 {
+                padding: 0; /* Quitamos todo el padding en móvil */
+            }
+            .imagen-invitacion {
+                max-width: 100%; /* Ocupa el 100% de la pantalla sin bordes en móvil */
+            }
+            .separador {
+                height: 40px; /* Un poco menos de espacio en móviles */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PÁGINA 1 -->
+    <div id="pagina-1">
+        <!-- He puesto sus nombres basándome en la imagen adjunta -->
+        <h1 id="titulo-portada">Madai & Iván</h1>
+        <p id="subtitulo-portada">Tenemos algo que contarte</p>
+        <button id="btn-entrar">Abrir Invitación</button>
+    </div>
+
+    <!-- PÁGINA 2 -->
+    <div id="pagina-2">
+        <!-- Primera imagen: La invitación principal -->
+        <img src="invitacion.jpg" alt="Invitación principal" class="imagen-invitacion">
+        
+        <!-- Espaciador -->
+        <div class="separador"></div>
+
+        <!-- Segunda imagen: El calendario -->
+        <img src="calendario.jpg" alt="Calendario" class="imagen-invitacion">
+        
+        <!-- Opcional: un espaciador al final para que no corte de golpe en móviles -->
+        <div class="separador"></div>
+    </div>
+
+    <!-- AUDIO -->
+    <audio id="musica-fondo" src="cancion.mp3" preload="auto" loop></audio>
+
+    <script>
+        document.getElementById('btn-entrar').addEventListener('click', function() {
+            // 1. Iniciar música
+            const musica = document.getElementById('musica-fondo');
+            musica.play();
+
+            // 2. Transición de páginas
+            document.getElementById('pagina-1').style.display = 'none';
+            // Cambiamos a 'flex' para mantener la estructura de columna
+            document.getElementById('pagina-2').style.display = 'flex'; 
+            
+            // 3. Subir arriba del todo
+            window.scrollTo(0, 0);
+        });
+    </script>
+</body>
+</html>
